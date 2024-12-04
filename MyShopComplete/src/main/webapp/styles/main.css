@@ -1,0 +1,213 @@
+/*body*/
+body {
+    height: 100%;
+    margin: 0;
+    background-color: black;
+    opacity: 89%;
+}
+
+/* Brak podkreślania linków */
+a {
+    text-decoration: none;
+}
+
+/*body*/
+
+/*logo*/
+.logo {
+    margin-left: 5px;
+    font-size: 2em;
+    font-weight: 400;
+    color: darkgoldenrod;
+}
+
+.logo:hover {
+    filter: brightness(200%);
+}
+
+/*logo*/
+
+/*górny pasek nawigacji*/
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 0;
+    text-align: center;
+    background-color: black;
+    opacity: 89%;
+    /*Podążanie za userem przy scrollowaniu*/
+    position: fixed;
+    top: 0;
+    z-index: 50; /*Nie bedzie zasłaniany przez inny content*/
+    width: 100%;
+}
+
+/*górny pasek nawigacji*/
+
+/*lista kategorii*/
+.categories > ul {
+    flex-wrap: wrap; /*Zawija elementy, gdyby strona miała się rozrosnąć, szczególnie przydatne przy telefonach*/
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.categories > ul > li {
+    flex-grow: 1;
+    padding: 0.5rem;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/*lista kategorii*/
+/*kategoria w liscie*/
+.category {
+    color: darkgoldenrod;
+}
+
+.category:hover {
+    filter: brightness(200%);
+    border-bottom: 2px solid darkgoldenrod;
+}
+
+/*kategoria w liscie*/
+
+/*akcje użytkownika*/
+.user-actions > a {
+    margin-right: 10px;
+}
+
+/*akcje użytkownika*/
+
+/*login*/
+a.login-link {
+    margin-right: 5px;
+}
+
+a.login-link:hover {
+    filter: brightness(200%);
+}
+
+.login-button {
+
+}
+
+/*login*/
+
+/*koszyk*/
+.shopping-cart:hover {
+    filter: brightness(200%);
+}
+
+/*koszyk*/
+
+/*pomoc*/
+.help-button:hover{
+    filter: brightness(200%);
+}
+/*pomoc*/
+
+/*flagowe produkty*/
+.flag-products {
+
+}
+
+.flag-Product-top button, .flag-Product-mid button, .flag-Product-bot button{
+    background-color: #B8860B;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100px;
+    height: 50px;
+    margin-top: 15px;
+    z-index: 51;
+    position: absolute;
+}
+
+.flag-Product-top button:hover, .flag-Product-mid button:hover, .flag-Product-bot button:hover{
+    filter: brightness(200%);
+}
+
+.flag-Product-top{
+    display: flex;
+    position: relative;/*Elementy podrzędne absolutne mają swój kontekst*/
+    overflow: hidden;/*Elementy nie wyjdą poza obszar całości*/
+    align-items: center;
+    justify-content: space-between;
+}
+
+.flag-Product-mid{
+    display: flex;
+    position: relative;/*Elementy podrzędne absolutne mają swój kontekst*/
+    overflow: hidden;/*Elementy nie wyjdą poza obszar całości*/
+    align-items: center;
+    justify-content: space-between;
+}
+
+.flag-Product-bot{
+    display: flex;
+    position: relative;/*Elementy podrzędne absolutne mają swój kontekst*/
+    overflow: hidden;/*Elementy nie wyjdą poza obszar całości*/
+    align-items: center;
+    justify-content: space-between;
+}
+.image-text-top{
+    width: 100%;
+    position: absolute;
+    top: 46px;
+    left: 0;
+    color: darkgoldenrod;
+    font-weight: bold;
+    font-size: 24px;
+    background-color: black;
+    opacity: 89%;
+    text-align: center;
+}
+
+.image-text{
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    color: darkgoldenrod;
+    font-weight: bold;
+    font-size: 24px;
+    background-color: black;
+    opacity: 89%;
+    margin-top: 0;
+    text-align: center;
+}
+.image-text:hover, .image-text-top:hover{
+    filter: brightness(200%);
+}
+
+.flag-product-image1 {
+    width: 100%;
+    height: 25%;
+}
+
+.flag-product-image2 {
+    width: 100%;
+    height: 25%;
+}
+
+.flag-product-image3 {
+    width: 100%;
+    height: 25%;
+}
+/*flagowe produkty*/
+
+/*footer*/
+.footer{
+    text-align: center;
+    color: #B8860B;
+    background-color: black;
+    opacity: 89%;
+    bottom: 0;
+    width: 100%;
+}
+/*footer*/
