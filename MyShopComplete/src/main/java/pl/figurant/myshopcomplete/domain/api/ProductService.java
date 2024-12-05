@@ -10,7 +10,16 @@ public class ProductService {
     private final ProductDao productDao = new ProductDao();
 
     public List<ProductInfo> findAll() {
-        List<Product> products = productDao.findAll();
+        List<Product> products = productDao.getAll();
+        List<ProductInfo> productInfos = new ArrayList<>();
+        for (Product product : products) {
+            productInfos.add(productInfoTransform(product));
+        }
+        return productInfos;
+    }
+
+    public List<ProductInfo> findByCategoryId(int id) {
+        List<Product> products = productDao.getByCategoryId(id);
         List<ProductInfo> productInfos = new ArrayList<>();
         for (Product product : products) {
             productInfos.add(productInfoTransform(product));

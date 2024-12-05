@@ -4,10 +4,7 @@ import pl.figurant.myshopcomplete.config.DataSourceProvider;
 
 import javax.naming.NamingException;
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,8 +18,9 @@ public class ProductDao {
             throw new RuntimeException(e);
         }
     }
+
     //Wczytuje pordukty z bazy danych
-    public List<Product> findAll() {
+    public List<Product> getAll() {
         final String query = """
                 SELECT
                     id, name, url, description, product_image, category_id, price, discount, in_stock
@@ -40,6 +38,28 @@ public class ProductDao {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public List<Product> getByCategoryId(int categoryId) {
+        final String query = """
+                SELECT id, name, url, description, product_image, category_id, price, discount, in_stock
+                FROM product
+                WHERE category_id = ?
+                """;
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, categoryId);
+            ResultSet resultSet = statement.executeQuery();
+            List<Product> products = new ArrayList<>();
+            while (resultSet.next()) {
+                products.add(transferDataToProduct(resultSet));
+                products.add(transferDataToProduct(resultSet));
+            }
+            return products;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     //Tworzy obiekt produkt z danych wczytanych przez baze
