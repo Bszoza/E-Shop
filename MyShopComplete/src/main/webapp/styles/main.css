@@ -4,12 +4,14 @@ body {
     margin: 0;
     background-color: black;
     opacity: 89%;
+    font-family: "PT Sans", sans-serif;
 }
 
 /* Brak podkreślania linków */
 a {
     text-decoration: none;
 }
+
 
 /*body*/
 
@@ -122,47 +124,41 @@ a.login-link:hover {
     font-weight: bold;
     cursor: pointer;
     width: 100px;
-    height: 50px;
-    margin-top: 15px;
+    height: 30px;
     z-index: 51;
-    position: absolute;
 }
 
 .flag-Product-top button:hover, .flag-Product-mid button:hover, .flag-Product-bot button:hover{
-    filter: brightness(200%);
+    filter: brightness(300%);
 }
 
+
 .flag-Product-top{
-    display: flex;
     position: relative;/*Elementy podrzędne absolutne mają swój kontekst*/
     overflow: hidden;/*Elementy nie wyjdą poza obszar całości*/
     align-items: center;
-    justify-content: space-between;
+
 }
 
 .flag-Product-mid{
-    display: flex;
     position: relative;/*Elementy podrzędne absolutne mają swój kontekst*/
     overflow: hidden;/*Elementy nie wyjdą poza obszar całości*/
     align-items: center;
-    justify-content: space-between;
 }
 
 .flag-Product-bot{
-    display: flex;
     position: relative;/*Elementy podrzędne absolutne mają swój kontekst*/
     overflow: hidden;/*Elementy nie wyjdą poza obszar całości*/
     align-items: center;
-    justify-content: space-between;
 }
 .image-text-top{
     width: 100%;
     position: absolute;
-    top: 46px;
+    top: 55px;
     left: 0;
     color: darkgoldenrod;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 16px;
     background-color: black;
     opacity: 89%;
     text-align: center;
@@ -171,33 +167,30 @@ a.login-link:hover {
 .image-text{
     width: 100%;
     position: absolute;
-    top: 0px;
+    top: 0;
     left: 0;
     color: darkgoldenrod;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 16px;
     background-color: black;
     opacity: 89%;
     margin-top: 0;
     text-align: center;
 }
 .image-text:hover, .image-text-top:hover{
-    filter: brightness(200%);
+    filter: brightness(150%);
 }
 
 .flag-product-image1 {
     width: 100%;
-    height: 25%;
 }
 
 .flag-product-image2 {
     width: 100%;
-    height: 25%;
 }
 
 .flag-product-image3 {
     width: 100%;
-    height: 25%;
 }
 /*flagowe produkty*/
 
