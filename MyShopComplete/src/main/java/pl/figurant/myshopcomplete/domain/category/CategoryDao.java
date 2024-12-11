@@ -24,7 +24,7 @@ public class CategoryDao {
     public List<Category> getAll() {
         final String query = """
                 SELECT
-                id, name, desription  
+                id, name, description
                 FROM category""";
         try (Connection connection = this.dataSource.getConnection();
              Statement statement = connection.createStatement()) {
@@ -36,6 +36,7 @@ public class CategoryDao {
             }
             return categories;
         } catch (SQLException e) {
+            System.out.println("Exception: " + e);
             throw new RuntimeException();
         }
 
@@ -66,7 +67,7 @@ public class CategoryDao {
     private Category transferDataToCategory(ResultSet resultSet) throws SQLException {
         Integer id = resultSet.getInt("id");
         String name = resultSet.getString("name");
-        String description = resultSet.getString("desription");
+        String description = resultSet.getString("description");
         return new Category(id, name, description);
     }
 }

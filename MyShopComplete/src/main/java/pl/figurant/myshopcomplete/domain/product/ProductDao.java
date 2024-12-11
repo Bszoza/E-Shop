@@ -23,7 +23,7 @@ public class ProductDao {
     public List<Product> getAll() {
         final String query = """
                 SELECT
-                    id, name, url, description, product_image, category_id, price, discount, in_stock
+                    id, name, description, product_image, category_id, price, discount, in_stock
                     FROM product
                 """;
         try (Connection connection = dataSource.getConnection();
@@ -42,7 +42,7 @@ public class ProductDao {
 
     public List<Product> getByCategoryId(int categoryId) {
         final String query = """
-                SELECT id, name, url, description, product_image, category_id, price, discount, in_stock
+                SELECT id, name, description, product_image, category_id, price, discount, in_stock
                 FROM product
                 WHERE category_id = ?
                 """;
@@ -52,7 +52,6 @@ public class ProductDao {
             ResultSet resultSet = statement.executeQuery();
             List<Product> products = new ArrayList<>();
             while (resultSet.next()) {
-                products.add(transferDataToProduct(resultSet));
                 products.add(transferDataToProduct(resultSet));
             }
             return products;
@@ -66,13 +65,12 @@ public class ProductDao {
     private Product transferDataToProduct(ResultSet resultSet) throws SQLException {
         int productID = resultSet.getInt("id");
         String name = resultSet.getString("name");
-        String ulr = resultSet.getString("url");
         String description = resultSet.getString("description");
         Integer category_id = resultSet.getInt("category_id");
         Double price = resultSet.getDouble("price");
         Double discount = resultSet.getDouble("discount");
         Integer in_stock = resultSet.getInt("in_stock");
         String image = resultSet.getString("product_image");
-        return new Product(productID, name, description, price, in_stock, image, category_id, discount, ulr);
+        return new Product(productID, name, description, price, in_stock, image, category_id, discount);
     }
 }

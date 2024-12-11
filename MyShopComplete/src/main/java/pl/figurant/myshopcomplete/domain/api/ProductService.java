@@ -30,8 +30,7 @@ public class ProductService {
     public ProductInfo productInfoTransform(Product product) {
         return new ProductInfo(
                 product.getName(), product.getDescription(), product.getPrice(),
-                product.getIn_stock(), product.getImage(), product.getDiscount(),
-                product.getUrl()
+                product.getIn_stock(), product.getImage(), product.getDiscount()
         );
     }
 }

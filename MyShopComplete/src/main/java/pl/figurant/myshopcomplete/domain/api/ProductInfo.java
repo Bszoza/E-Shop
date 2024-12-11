@@ -7,16 +7,14 @@ public class ProductInfo {
     private int in_stock;
     private String image;
     private Double discount;
-    private String url;
 
-    public ProductInfo(String name, String description, double price, int in_stock, String image, Double discount, String url) {
+    public ProductInfo(String name, String description, double price, int in_stock, String image, Double discount) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.in_stock = in_stock;
         this.image = image;
         this.discount = discount;
-        this.url = url;
     }
 
     public String getName() {
@@ -43,7 +41,4 @@ public class ProductInfo {
         return discount;
     }
 
-    public String getUrl() {
-        return url;
-    }
 }

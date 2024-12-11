@@ -46,18 +46,19 @@ a {
     z-index: 50; /*Nie bedzie zasłaniany przez inny content*/
     width: 100%;
 }
-/*
+
 .navigation-static {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Zawijanie elementów wewnętrznych, jeśli ekran jest zbyt wąski */
     align-items: center;
     justify-content: space-evenly;
     padding: 16px 0;
     text-align: center;
     background-color: black;
     opacity: 89%;
+    /*Podążanie za userem przy scrollowaniu*/
     width: 100%;
-}*/
+}
 
 /*górny pasek nawigacji*/
 
@@ -124,102 +125,98 @@ a.login-link:hover {
 /*koszyk*/
 
 /*pomoc*/
-.help-button:hover{
+.help-button:hover {
     filter: brightness(200%);
 
 }
+
 /*pomoc*/
 
-/*flagowe produkty*/
-.flag-products {
 
+/*top*/
+.top {
+    margin-top: 100px;
+    color: darkgoldenrod;
+    text-align: center;
 }
-/*
-.flag-Product-top button , .flag-Product-mid button, .flag-Product-bot button{
+
+.top > h1 {
+    margin-top: 80px;
+    color: darkgoldenrod;
+    text-align: center;
+    font-weight: bold;
+}
+
+/*top*/
+/*main*/
+
+/*mobilka*/
+
+
+/*mobilka*/
+
+body > main {
+    color: #B8860B;
+    margin-top: 80px; /* Przesunięcie poniżej nawigacji */
+    display: grid; /* Ustawienie układu Grid tylko dla main */
+    grid-template-columns: repeat(1, 1fr); /* 3 kolumny */
+    gap: 16px; /* Odstępy między elementami */
+    padding: 5px;
+}
+
+
+main > h1, main > h2, main > p {
+    text-align: center;
+    font-size: 3.5vw;
+}
+
+.category-description {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/*produkty*/
+.product {
+    margin-top: 20px;
+    border: 1px solid goldenrod;
+    padding: 10px;
+    text-align: center;
+    background-color: goldenrod;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    color: black;
+    font-weight: bold;
+}
+.product > a{
+    color: inherit;
+}
+.product img {
+    width:75%; /* you can use % */
+    height: auto;
+}
+
+.buy-button {
     background-color: #B8860B;
     color: black;
-    font-size: 10px;
+    font-size: 16px;
     font-weight: bold;
     cursor: pointer;
     width: 100px;
     height: 30px;
     z-index: 51;
-}*/
-/*
-.flag-Product-top button:hover, .flag-Product-mid button:hover, .flag-Product-bot button:hover{
+}
+
+.buy-button:hover {
     filter: brightness(300%);
 }
- */
-
-.flag-Product-top{
-    position: relative;/*Elementy podrzędne absolutne mają swój kontekst*/
-    overflow: hidden;/*Elementy nie wyjdą poza obszar całości*/
-    align-items: center;
-}
-/*
-.flag-Product-mid{
-    position: relative;
-    overflow: hidden;
-    align-items: center;
-}
-
-.flag-Product-bot{
-    position: relative;
-    overflow: hidden;
-    align-items: center;
-}
-*/
-.image-text-top{
-    width: 100%;
-    position: absolute;
-    left: 0;
-    color: darkgoldenrod;
-    font-weight: bold;
-    font-size: 10px;
-    background-color: black;
-    opacity: 89%;
-    text-align: center;
-}
-
-/*.image-text{
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    color: darkgoldenrod;
-    font-weight: bold;
-    font-size: 10px;
-    background-color: black;
-    opacity: 89%;
-    margin-top: 0;
-    text-align: center;
-}
-.image-text:hover, .image-text-top:hover{
-    filter: brightness(150%);
-}*/
-
-.flag-product-image1 {
-    width: 100%;
-    height: 100%;
-}
-/*
-.flag-product-image2 {
-    width: 100%;
-}
-
-.flag-product-image3 {
-    width: 100%;
-}*/
-/*flagowe produkty*/
 
 /*footer*/
-.footer{
+.footer {
     text-align: center;
     color: #B8860B;
     background-color: black;
     opacity: 89%;
+    padding: 10px 0;
     bottom: 0;
     width: 100%;
-    font-size: 12px;
 }
-/*footer*/
+

@@ -21,6 +21,8 @@ public class CategoryController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        List<CategoryInfo> categoryInfos = categoryService.findAll();
+        req.setAttribute("categories", categoryInfos);
         int categoryId = Integer.parseInt(req.getParameter("id"));
         CategoryInfo categoryInfo = categoryService.findById(categoryId).orElseThrow();
         req.setAttribute("category", categoryInfo);
