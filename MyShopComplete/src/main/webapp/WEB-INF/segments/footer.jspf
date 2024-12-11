@@ -1,0 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
+<div class="footer">
+    <p>&copy; Kacper Brzozowski. Wszelkie prawa zastrzeżone.</p>
+</div>

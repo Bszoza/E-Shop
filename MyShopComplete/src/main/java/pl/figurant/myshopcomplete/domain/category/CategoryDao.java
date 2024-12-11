@@ -1,6 +1,7 @@
 package pl.figurant.myshopcomplete.domain.category;
 
 import pl.figurant.myshopcomplete.config.DataSourceProvider;
+import pl.figurant.myshopcomplete.domain.common.BaseDao;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -10,16 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class CategoryDao {
-    private final DataSource dataSource;
+public class CategoryDao extends BaseDao {
 
-    public CategoryDao() {
-        try {
-            this.dataSource = DataSourceProvider.getDataSource();
-        } catch (NamingException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     public List<Category> getAll() {
         final String query = """

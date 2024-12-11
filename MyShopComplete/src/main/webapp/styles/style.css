@@ -1,11 +1,13 @@
 /*body*/
+
+
 body {
     height: 100%;
     margin: 0;
     background-color: black;
     opacity: 89%;
     font-family: "PT Sans", sans-serif;
-    font-size: 3.5vw;
+    font-size: 15px;
 }
 
 /* Brak podkreślania linków */
@@ -19,7 +21,7 @@ a {
 /*logo*/
 .logo {
     margin-left: 5px;
-    font-size: 3.5vw;
+    font-size: 35px;
     font-weight: 400;
     color: darkgoldenrod;
 }
@@ -35,7 +37,7 @@ a {
     display: flex;
     flex-wrap: wrap; /* Zawijanie elementów wewnętrznych, jeśli ekran jest zbyt wąski */
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     padding: 16px 0;
     text-align: center;
     background-color: black;
@@ -46,21 +48,6 @@ a {
     z-index: 50; /*Nie bedzie zasłaniany przez inny content*/
     width: 100%;
 }
-
-.navigation-static {
-    display: flex;
-    flex-wrap: wrap; /* Zawijanie elementów wewnętrznych, jeśli ekran jest zbyt wąski */
-    align-items: center;
-    justify-content: space-evenly;
-    padding: 16px 0;
-    text-align: center;
-    background-color: black;
-    opacity: 89%;
-    /*Podążanie za userem przy scrollowaniu*/
-    width: 100%;
-}
-
-/*górny pasek nawigacji*/
 
 /*lista kategorii*/
 .categories > ul {
@@ -76,7 +63,7 @@ a {
     flex-grow: 1;
     padding: 0.5rem;
     font-weight: bold;
-    font-size: 3.5vw;
+    font-size: 28px;
     color: darkgoldenrod;
 }
 
@@ -111,8 +98,9 @@ a.login-link:hover {
     filter: brightness(200%);
 }
 
-.login-button {
-
+.login-button, .help-button, .cart-button {
+    width: 32px;
+    height: 32px;
 }
 
 /*login*/
@@ -132,6 +120,39 @@ a.login-link:hover {
 
 /*pomoc*/
 
+/*flagowe produkty*/
+.flag-products {
+
+}
+
+.flag-Product-top {
+    position: relative; /*Elementy podrzędne absolutne mają swój kontekst*/
+    overflow: hidden; /*Elementy nie wyjdą poza obszar całości*/
+    align-items: center;
+}
+
+.image-text-top {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    color: darkgoldenrod;
+    font-weight: bold;
+    font-size: 20px;
+    background-color: black;
+    opacity: 89%;
+    text-align: center;
+}
+
+.flag-product-image1 {
+    width: 100%;
+    height: 100%;
+}
+
+/*flagowe produkty*/
+
+
+/*          CATEGORY              */
+
 
 /*top*/
 .top {
@@ -148,13 +169,8 @@ a.login-link:hover {
 }
 
 /*top*/
+
 /*main*/
-
-/*mobilka*/
-
-
-/*mobilka*/
-
 body > main {
     color: #B8860B;
     margin-top: 80px; /* Przesunięcie poniżej nawigacji */
@@ -167,7 +183,7 @@ body > main {
 
 main > h1, main > h2, main > p {
     text-align: center;
-    font-size: 3.5vw;
+    font-size: 22px;
 }
 
 .category-description {
@@ -182,16 +198,33 @@ main > h1, main > h2, main > p {
     padding: 10px;
     text-align: center;
     background-color: goldenrod;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     color: black;
     font-weight: bold;
+    margin-left: auto;
+    margin-right: auto;
 }
-.product > a{
+
+.product-header {
+    font-size: 20px;
+}
+
+.images {
+    display: block;
+
+}
+
+.product > a {
     color: inherit;
 }
-.product img {
-    width:75%; /* you can use % */
-    height: auto;
+
+.main_photo {
+    width: 30%; /* you can use % */
+    height: 35%;
+}
+
+.additional-photos {
+    width: 30%; /* you can use % */
+    height: 35%;
 }
 
 .buy-button {
@@ -209,14 +242,36 @@ main > h1, main > h2, main > p {
     filter: brightness(300%);
 }
 
+
+/*          CATEGORY              */
+
+/*          PRODUCT              */
+.product-display{
+    background-color: #B8860B;
+}
+/*          PRODUCT              */
 /*footer*/
 .footer {
     text-align: center;
     color: #B8860B;
     background-color: black;
     opacity: 89%;
-    padding: 10px 0;
     bottom: 0;
     width: 100%;
+    font-size: 12px;
 }
 
+@media only screen and (max-width: 840px) {
+    /* Zmniejszenie logo */
+    .logo {
+        font-size: 3.5vw; !important;
+    }
+    .categories > ul > li{
+        font-size: 3.5vw;!important;
+    }
+    .login-button, .help-button, .cart-button {
+        width: 3.5vw;!important;
+        height: 3.5vw;!important;
+    }
+}
+/*footer*/

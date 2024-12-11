@@ -1,23 +1,18 @@
 package pl.figurant.myshopcomplete.domain.product;
 
 import pl.figurant.myshopcomplete.config.DataSourceProvider;
+import pl.figurant.myshopcomplete.domain.category.Category;
+import pl.figurant.myshopcomplete.domain.common.BaseDao;
 
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-public class ProductDao {
-    private final DataSource dataSource;
+public class ProductDao extends BaseDao {
 
-    public ProductDao() {
-        try {
-            this.dataSource = DataSourceProvider.getDataSource();
-        } catch (NamingException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     //Wczytuje pordukty z bazy danych
     public List<Product> getAll() {
@@ -59,6 +54,25 @@ public class ProductDao {
             throw new RuntimeException(e);
         }
 
+    }
+
+    public Optional<Product> getById(int id) {
+        final String query = """
+                SELECT id, name, description, product_image, category_id, price, discount, in_stock
+                FROM product
+                WHERE id = ?
+                """;
+        try (Connection connection = this.dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                Product product = transferDataToProduct(resultSet);
+                return Optional.of(product);
+            } else return Optional.empty();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     //Tworzy obiekt produkt z danych wczytanych przez baze

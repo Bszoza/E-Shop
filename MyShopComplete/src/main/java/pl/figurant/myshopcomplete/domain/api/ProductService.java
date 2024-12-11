@@ -1,10 +1,12 @@
 package pl.figurant.myshopcomplete.domain.api;
 
+import pl.figurant.myshopcomplete.domain.category.Category;
 import pl.figurant.myshopcomplete.domain.product.Product;
 import pl.figurant.myshopcomplete.domain.product.ProductDao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class ProductService {
     private final ProductDao productDao = new ProductDao();
@@ -27,10 +29,29 @@ public class ProductService {
         return productInfos;
     }
 
+    public Optional <ProductInfo> findById(int id) {
+        return productDao.getById(id).map(productInfoMapper::map);
+    }
+
     public ProductInfo productInfoTransform(Product product) {
         return new ProductInfo(
-                product.getName(), product.getDescription(), product.getPrice(),
+                product.getId(), product.getName(), product.getDescription(), product.getPrice(),
                 product.getIn_stock(), product.getImage(), product.getDiscount()
         );
+    }
+
+    private static class productInfoMapper {
+        static ProductInfo map(Product p) {
+            return new ProductInfo(
+                    p.getId(),
+                    p.getName(),
+                    p.getDescription(),
+                    p.getPrice(),
+                    p.getIn_stock(),
+                    p.getImage(),
+                    p.getDiscount()
+            );
+        }
+
     }
 }
