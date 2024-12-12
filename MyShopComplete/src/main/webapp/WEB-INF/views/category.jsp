@@ -27,11 +27,17 @@
                     <img class="additional-photos" title="product" src="${product.image2}">
                     <img class="additional-photos" title="product" src="${product.image3}">
                 </div>
-                <p class="price-discount">Cena: <s>${product.price}zł </s><fmt:formatNumber
-                        value="${product.price - (product.price * (product.discount / 100))}" type="number"
-                        maxFractionDigits="2"/>zł</p>
-                <p class="product-detail">Opis: ${product.description}</p>
-                <a href="#">
+                <c:choose>
+                    <c:when test="${product.discount>0.0}">
+                        <p class="price-discount">Cena: <s>${product.price}zł </s><fmt:formatNumber
+                                value="${product.price - (product.price * (product.discount / 100))}" type="number"
+                                maxFractionDigits="2"/>zł</p>
+                    </c:when>
+                    <c:otherwise>
+                        <p class="price-discount"><c:out value="${product.price}"/>zł</p>
+                    </c:otherwise>
+                </c:choose>
+                <a href="${pageContext.request.contextPath.concat('/product?id=').concat(product.id)}">
                     <button class="buy-button">Wyświetl</button>
                 </a>
             </a>

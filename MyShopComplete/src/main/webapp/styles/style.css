@@ -217,7 +217,7 @@ main > h1, main > h2, main > p {
     color: inherit;
 }
 
-.main_photo {
+.main-photo {
     width: 30%; /* you can use % */
     height: 35%;
 }
@@ -244,10 +244,48 @@ main > h1, main > h2, main > p {
 
 
 /*          CATEGORY              */
+.images-product {
+    display: block;
 
+}
+
+.product > a {
+    color: inherit;
+}
+
+.main_photo {
+    width: 30%;
+
+}
+
+.additional-photos {
+    width: 30%;
+
+}
 /*          PRODUCT              */
-.product-display{
+.add-cart {
     background-color: #B8860B;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100px;
+    height: 50px;
+    z-index: 51;
+}
+
+.add-cart:hover{
+    filter: brightness(300%);
+}
+
+.main-photo-product {
+    width: 30%; /* you can use % */
+    height: 35%;
+}
+
+.additional-photos-product {
+    width: 30%; /* you can use % */
+    height: 35%;
 }
 /*          PRODUCT              */
 /*footer*/
@@ -273,5 +311,6 @@ main > h1, main > h2, main > p {
         width: 3.5vw;!important;
         height: 3.5vw;!important;
     }
+
 }
 /*footer*/
