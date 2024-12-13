@@ -22,10 +22,9 @@ public class ProductController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<CategoryInfo> categoryInfos = categoryService.findAll();
         req.setAttribute("categories", categoryInfos);
-        int categoryId = Integer.parseInt(req.getParameter("id"));
-        CategoryInfo categoryInfo = categoryService.findById(categoryId).orElseThrow();
         int id = Integer.parseInt(req.getParameter("id"));
         ProductInfo productInfo = productService.findById(id).orElseThrow();
+        System.out.println(productInfo.getId());
         req.setAttribute("product", productInfo);
         req.getRequestDispatcher("WEB-INF/views/product.jsp").forward(req, resp);
     }
