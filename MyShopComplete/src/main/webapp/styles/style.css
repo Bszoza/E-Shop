@@ -1,14 +1,13 @@
+
 /*body*/
-
-
-body {
-    height: 100%;
-    margin: 0;
-    background-color: black;
-    opacity: 89%;
-    font-family: "PT Sans", sans-serif;
-    font-size: 15px;
-}
+  body {
+      height: 100%;
+      margin: 0;
+      background-color: black;
+      opacity: 89%;
+      font-family: "PT Sans", sans-serif;
+      font-size: 15px;
+  }
 
 /* Brak podkreślania linków */
 a {
@@ -288,6 +287,68 @@ main > h1, main > h2, main > p {
     height: 35%;
 }
 /*          PRODUCT              */
+
+/*           Cart                */
+.cart-table {
+    width: 100%;
+    border-collapse: collapse; /* Usunięcie odstępów między komórkami */
+    margin: 20px auto; /* Wyśrodkowanie tabeli */
+    background-color: goldenrod;
+    color: black;
+    font-weight: bold;
+}
+
+.cart-table th, .cart-table td {
+    border: 2px solid darkgoldenrod;
+    padding: 10px;
+    text-align: center;
+}
+
+.cart-table th {
+    background-color: #B8860B; /* Tło nagłówków */
+    color: black;
+    font-size: 18px;
+}
+
+.cart-table td {
+    font-size: 16px;
+    color: black;
+}
+
+.cart-table tr:nth-child(even) {
+    background-color: #FFF8DC; /* Kolor dla parzystych wierszy */
+}
+
+.cart-table tr:hover {
+    background-color: #FFD700; /* Podświetlenie wiersza po najechaniu */
+}
+
+.cart-table .button-add,
+.cart-table .button-remove {
+    background-color: #B8860B; /* Złoty kolor */
+    color: black;
+    border: 2px solid darkgoldenrod; /* Obwódka */
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px 10px; /* Odstępy wewnętrzne */
+    cursor: pointer;
+    transition: all 0.3s ease-in-out; /* Animacja */
+}
+
+.cart-table .button-add:hover,
+.cart-table .button-remove:hover {
+    filter: brightness(300%);
+    background-color: darkgoldenrod;
+    color: white;
+    transform: scale(1.1);
+}
+
+.cart-table .button-add:active,
+.cart-table .button-remove:active {
+    transform: scale(0.95);
+}
+/*           Cart                */
+
 /*footer*/
 .footer {
     text-align: center;

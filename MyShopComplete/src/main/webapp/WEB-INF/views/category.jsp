@@ -23,12 +23,12 @@
             <a href="${pageContext.request.contextPath.concat('/product?id=').concat(product.id)}">
                 <h2 class="product-header"><c:out value="${product.name}"/></h2>
                 <div class="images">
-                    <img class="main_photo" title="product" src="${product.image1}">
+                    <img class="main_photo" title="${product.image1}" src="${product.image1}">
                     <img class="additional-photos" title="product" src="${product.image2}">
                     <img class="additional-photos" title="product" src="${product.image3}">
                 </div>
                 <c:choose>
-                    <c:when test="${product.discount>0.0}">
+                    <c:when test="${product.discount > 0.00}">
                         <p class="price-discount">Cena: <s>${product.price}zł </s><fmt:formatNumber
                                 value="${product.price - (product.price * (product.discount / 100))}" type="number"
                                 maxFractionDigits="2"/>zł</p>
@@ -45,6 +45,5 @@
     </c:forEach>
 </main>
 <%@include file="../segments/footer.jspf" %>
->
 </body>
 </html>

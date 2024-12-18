@@ -24,7 +24,6 @@ public class ProductController extends HttpServlet {
         req.setAttribute("categories", categoryInfos);
         int id = Integer.parseInt(req.getParameter("id"));
         ProductInfo productInfo = productService.findById(id).orElseThrow();
-        System.out.println(productInfo.getId());
         req.setAttribute("product", productInfo);
         req.getRequestDispatcher("WEB-INF/views/product.jsp").forward(req, resp);
     }

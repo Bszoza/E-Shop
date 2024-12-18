@@ -17,6 +17,7 @@ public class ProductService {
         for (Product product : products) {
             productInfos.add(productInfoTransform(product));
         }
+
         return productInfos;
     }
 

@@ -51,4 +51,8 @@ public class User {
     public LocalDateTime getRegistrationDate() {
         return registrationDate;
     }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

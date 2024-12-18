@@ -1,8 +1,10 @@
 package pl.figurant.myshopcomplete.domain.api;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import pl.figurant.myshopcomplete.domain.user.User;
 import pl.figurant.myshopcomplete.domain.user.UserDao;
 
+import java.security.NoSuchAlgorithmException;
 import java.time.LocalDateTime;
 
 public class UserService {
@@ -10,7 +12,14 @@ public class UserService {
 
     public void registerUser(UserRegistration userRegistration) {
         User userToSave = UserMapper.map(userRegistration);
+        //userDao.save(userToSave);
+        hashPasswordWithSha256(userToSave);
         userDao.save(userToSave);
+    }
+
+    private void hashPasswordWithSha256(User user) {
+        String sha256Password = DigestUtils.sha256Hex(user.getPassword());
+        user.setPassword(sha256Password);
     }
 
     private static class UserMapper {

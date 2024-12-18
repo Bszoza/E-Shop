@@ -34,12 +34,19 @@
         <p class="discount">Obniżka: <c:out value="${product.discount}"/>%</p>
         <p class="in-stock"> W magazynie: <c:out value="${product.in_stock}"/></p>
         <p class="product-detail">Opis: ${product.description}</p>
-        <a href="#">
-            <button class="add-cart">Do koszyka</button>
-        </a>
+        <c:choose>
+            <c:when test="${product.in_stock>0}">
+                <form action="${pageContext.request.contextPath}/add-to-cart" method="post">
+                    <input type="hidden" name="productName" value="${product.name}">
+                    <input type="hidden" name="productPrice" value="${product.price - (product.price * (product.discount / 100))}">
+                    <button class="add-cart" type="submit">Do koszyka</button>
+                </form></c:when>
+            <c:otherwise>
+                <button class="add-cart" disabled>Brak</button>
+            </c:otherwise>
+        </c:choose>
     </div>
 </main>
 <%@include file="../segments/footer.jspf" %>
->
 </body>
 </html>

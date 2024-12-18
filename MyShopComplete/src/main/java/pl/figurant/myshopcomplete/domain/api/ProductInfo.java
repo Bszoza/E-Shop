@@ -47,9 +47,11 @@ public class ProductInfo {
     public String getImage1() {
         return image1;
     }
+
     public String getImage2() {
         return image2;
     }
+
     public String getImage3() {
         return image3;
     }

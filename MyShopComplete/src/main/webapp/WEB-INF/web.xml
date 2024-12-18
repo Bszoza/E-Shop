@@ -11,4 +11,12 @@
             <form-error-page>/WEB-INF/views/login.jsp</form-error-page>
         </form-login-config>
     </login-config>
+    <session-config>
+        <!--    30 minut    -->
+        <session-timeout>30</session-timeout>
+        <cookie-config>
+            <!--    24 godziny (w sekundach)    -->
+            <max-age>86400</max-age>
+        </cookie-config>
+    </session-config>
 </web-app>
