@@ -37,6 +37,11 @@ a {
     background-color: goldenrod;
 }
 
+.user-form-button:hover {
+    filter: brightness(300%);
+    cursor: pointer;
+}
+
 .register_text{
     color: goldenrod;
     text-align: center;

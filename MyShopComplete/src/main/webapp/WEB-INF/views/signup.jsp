@@ -10,7 +10,7 @@
 <body>
 <div class="container">
     <%@ include file="../segments/header.jspf" %>
-    <form class="user-form" action="${pageContext.request.contextPath}/signup" method="post" class="user-form">
+    <form class="user-form" action="${pageContext.request.contextPath}/signup" method="post">
         <h2 class="user-form-title">Zarejestruj się na naszym sklepie</h2>
         <input name="name" placeholder="Imię" required>
         <input name="lastname" placeholder="Nazwisko" required>

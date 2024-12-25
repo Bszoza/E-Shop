@@ -5,7 +5,7 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>${requestScope.product.name}</title>
+    <title>Koszyk</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/0aada522c4.js" crossorigin="anonymous"></script>
     <script src="../jscripts/modal.js"></script>
@@ -13,7 +13,7 @@
 </head>
 <body>
 <%@ include file="../segments/header.jspf" %>
-<main>
+<main class="cart-content">
     <h1>Koszyk</h1>
     <h1>Cena całkowita: <fmt:formatNumber value="${requestScope.cartPrice}" type="number" maxFractionDigits="2"
                                           minFractionDigits="2"/> zł</h1>
@@ -60,6 +60,12 @@
         </c:forEach>
         </tbody>
     </table>
+    <form action="${pageContext.request.contextPath}/privateform" method="get">
+        <button class="order-button" type="submit">Zamów prywatnie</button>
+    </form>
+    <form action="${pageContext.request.contextPath}/companyform" method="get">
+        <button class="order-button" type="submit">Weź na fakturę</button>
+    </form>
 </main>
 <%@include file="../segments/footer.jspf" %>
 </body>

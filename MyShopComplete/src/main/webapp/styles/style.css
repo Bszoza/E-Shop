@@ -289,6 +289,9 @@ main > h1, main > h2, main > p {
 /*          PRODUCT              */
 
 /*           Cart                */
+.cart-content{
+    text-align: center;
+}
 .cart-table {
     width: 100%;
     border-collapse: collapse; /* Usunięcie odstępów między komórkami */
@@ -347,6 +350,22 @@ main > h1, main > h2, main > p {
 .cart-table .button-remove:active {
     transform: scale(0.95);
 }
+
+.order-button {
+    background-color: #B8860B;
+    color: black;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100px;
+    height: 40px;
+    z-index: 51;
+}
+
+.order-button:hover {
+    filter: brightness(300%);
+}
+
 /*           Cart                */
 
 /*footer*/

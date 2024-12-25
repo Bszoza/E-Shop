@@ -13,7 +13,7 @@ import java.util.List;
 
 @WebServlet("/cart")
 public class CartController extends HttpServlet {
-    ArrayList<CartItem> cartItems = new ArrayList<>();
+    //ArrayList<CartItem> cartItems = new ArrayList<>();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Double cartPrice = 0.00;
