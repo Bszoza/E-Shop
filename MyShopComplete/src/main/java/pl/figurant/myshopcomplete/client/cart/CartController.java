@@ -13,7 +13,6 @@ import java.util.List;
 
 @WebServlet("/cart")
 public class CartController extends HttpServlet {
-    //ArrayList<CartItem> cartItems = new ArrayList<>();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Double cartPrice = 0.00;
@@ -24,6 +23,7 @@ public class CartController extends HttpServlet {
         for (CartItem cartItem : cartItems) {
             cartPrice+=cartItem.getPrice();
         }
+        cartPrice+=5.00;//wysyłka
         req.setAttribute("cartPrice", cartPrice);
         req.setAttribute("cartItems", cartItems);
         req.getRequestDispatcher("WEB-INF/views/cart.jsp").forward(req, resp);

@@ -1,5 +1,7 @@
 package pl.figurant.myshopcomplete.domain.cart;
 
+import java.math.BigDecimal;
+
 public class CartItem {
     private Double price;
     private Integer quantity;
@@ -10,7 +12,6 @@ public class CartItem {
     public CartItem(Double price, Integer quantity, String productName) {
         this.price = price;
         this.quantity = quantity;
-        //this.productId = productId;
         this.productName = productName;
     }
 

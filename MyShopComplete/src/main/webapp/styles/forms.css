@@ -46,3 +46,7 @@ a {
     color: goldenrod;
     text-align: center;
 }
+
+.error-message{
+    color: red;
+}

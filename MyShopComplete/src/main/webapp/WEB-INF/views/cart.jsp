@@ -15,7 +15,7 @@
 <%@ include file="../segments/header.jspf" %>
 <main class="cart-content">
     <h1>Koszyk</h1>
-    <h1>Cena całkowita: <fmt:formatNumber value="${requestScope.cartPrice}" type="number" maxFractionDigits="2"
+    <h1>Cena całkowita (+5zł za wysyłkę): <fmt:formatNumber value="${requestScope.cartPrice}" type="number" maxFractionDigits="2"
                                           minFractionDigits="2"/> zł</h1>
     <table class="cart-table">
         <thead>
@@ -60,12 +60,20 @@
         </c:forEach>
         </tbody>
     </table>
-    <form action="${pageContext.request.contextPath}/privateform" method="get">
-        <button class="order-button" type="submit">Zamów prywatnie</button>
-    </form>
-    <form action="${pageContext.request.contextPath}/companyform" method="get">
-        <button class="order-button" type="submit">Weź na fakturę</button>
-    </form>
+    <a>Koszt wysyłki wynosi </a>
+    <c:choose>
+        <c:when test="${not empty cartItems}">
+            <form action="${pageContext.request.contextPath}/privateform" method="get">
+                <button class="order-button" type="submit">Zamów prywatnie</button>
+            </form>
+            <form action="${pageContext.request.contextPath}/companyform" method="get">
+                <button class="order-button" type="submit">Weź na fakturę</button>
+            </form>
+        </c:when>
+        <c:otherwise>
+            <h1>Koszyk jest pusty</h1>
+        </c:otherwise>
+    </c:choose>
 </main>
 <%@include file="../segments/footer.jspf" %>
 </body>

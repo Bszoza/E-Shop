@@ -37,13 +37,14 @@ public class PrivateOrderController extends HttpServlet {
         }
         order.setProductNames(items);
         order.setShippingPrice(5.00);
-        Double cartPrice = 0.00;
+        Double cartPrice = order.getShippingPrice();
         for (CartItem cartItem : cartItems) {
             cartPrice += cartItem.getPrice();
         }
         order.setPrice(cartPrice);
         OrderService orderService = new OrderService();
         orderService.savePrivateOrder(order);
+        cartItems.clear();
         resp.sendRedirect(req.getContextPath()+"/");
     }
 

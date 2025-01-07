@@ -10,6 +10,23 @@
     <script src="https://kit.fontawesome.com/0aada522c4.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/forms.css">
     <%@include file="../segments/stylesheets.jspf" %>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.querySelector('.user-form');
+            const houseNumberInput = form.querySelector('input[name="houseNumber"]');
+            const localNumberInput = form.querySelector('input[name="localNumber"]');
+
+            form.addEventListener('submit', (event) => {
+                const houseNumber = houseNumberInput.value.trim();
+                const localNumber = localNumberInput.value.trim();
+
+                if (!houseNumber && !localNumber) {
+                    event.preventDefault(); // Zatrzymuje wysyłanie formularza
+                    alert("Proszę uzupełnić przynajmniej jedno pole: Nr domu lub Nr lokalu.");
+                }
+            });
+        });
+    </script>
 </head>
 <body>
 <%@ include file="../segments/header.jspf" %>
@@ -23,7 +40,7 @@
     <input name="lastName" placeholder="Nazwisko" required>
     <input name="email" placeholder="email" type="email" required>
     <input name="street" placeholder="ulica" required>
-    <input name="houseNumber" placeholder="Nr domu" required>
+    <input name="houseNumber" placeholder="Nr domu">
     <input name="localNumber" placeholder="Nr lokalu">
     <input type="text" name="postalCode" pattern="[0-9]{2}-[0-9]{3}" placeholder="__-___" required>
     <input type="text" name="place" placeholder="Miejscowość" required>

@@ -22,6 +22,9 @@ public class CompanyOrderController extends HttpServlet {
             cartItems = new ArrayList<>();
             req.getSession().setAttribute("cartItems", cartItems);
         }
+
+        String houseNumber = req.getParameter("houseNumber");
+        String localNumber = req.getParameter("localNumber");
         CompanyOrderInfo order = new CompanyOrderInfo();
         order.setCountry(req.getParameter("country"));
         order.setCompanyName(req.getParameter("name"));
@@ -29,7 +32,8 @@ public class CompanyOrderController extends HttpServlet {
         order.setEmail(req.getParameter("email"));
         order.setPhone("+" + req.getParameter("areaCode") + " " + req.getParameter("phone"));
         order.setPostalCode(req.getParameter("postalCode"));
-        order.setAddress(createAddress(req.getParameter("place"), req.getParameter("street"), req.getParameter("houseNumber"), req.getParameter("localNumber")));
+        order.setAddress(createAddress(req.getParameter("place"), req.getParameter("street"), houseNumber, localNumber));
+
         String items = "";
         for (CartItem cartItem : cartItems) {
             items += cartItem.getProductName();
@@ -37,14 +41,17 @@ public class CompanyOrderController extends HttpServlet {
         }
         order.setProductNames(items);
         order.setShippingPrice(5.00);
-        Double cartPrice = 0.00;
+
+        Double cartPrice = order.getShippingPrice();
         for (CartItem cartItem : cartItems) {
             cartPrice += cartItem.getPrice();
         }
         order.setPrice(cartPrice);
+
         OrderService orderService = new OrderService();
         orderService.saveCompanyOrder(order);
-        resp.sendRedirect(req.getContextPath()+"/");
+        cartItems.clear();
+        resp.sendRedirect(req.getContextPath() + "/");
     }
 
     @Override
