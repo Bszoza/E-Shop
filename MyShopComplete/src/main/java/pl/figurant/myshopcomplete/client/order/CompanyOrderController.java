@@ -6,10 +6,12 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import pl.figurant.myshopcomplete.domain.api.CompanyOrderInfo;
+import pl.figurant.myshopcomplete.domain.api.MailSender;
 import pl.figurant.myshopcomplete.domain.api.OrderService;
 import pl.figurant.myshopcomplete.domain.cart.CartItem;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,14 +44,20 @@ public class CompanyOrderController extends HttpServlet {
         order.setProductNames(items);
         order.setShippingPrice(5.00);
 
-        Double cartPrice = order.getShippingPrice();
+        BigDecimal cartPrice = BigDecimal.valueOf(order.getShippingPrice());
         for (CartItem cartItem : cartItems) {
-            cartPrice += cartItem.getPrice();
+            cartPrice = cartPrice.add(cartItem.getPrice());
         }
         order.setPrice(cartPrice);
 
         OrderService orderService = new OrderService();
         orderService.saveCompanyOrder(order);
+        MailSender mailSender = new MailSender();
+        try {
+            mailSender.sendCompanyOrderConfirmation(order);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         cartItems.clear();
         resp.sendRedirect(req.getContextPath() + "/");
     }

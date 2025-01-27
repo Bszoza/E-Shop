@@ -1,25 +1,29 @@
 package pl.figurant.myshopcomplete.domain.product;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class Product {
     private Integer id;
     private String name;
     private String description;
-    private double price;
+    private BigDecimal price;
     private int in_stock;
     private String image;
     private Integer category_id;
     private Double discount;
 
-    public Product(Integer id, String name, String description, double price, int in_stock, String image, Integer category_id, Double discount) {
+    public Product(Integer id, String name, String description, String price, int in_stock, String image, Integer category_id, Double discount) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.price = price;
+        this.price = new BigDecimal(price).setScale(2, BigDecimal.ROUND_HALF_UP);
         this.in_stock = in_stock;
         this.image = image;
         this.category_id = category_id;
         this.discount = discount;
     }
+
     public Integer getId() {
         return id;
     }
@@ -34,7 +38,7 @@ public class Product {
     }
 
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 

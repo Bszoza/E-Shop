@@ -1,15 +1,18 @@
 package pl.figurant.myshopcomplete.client.order;
 
+import com.mysql.cj.util.StringUtils;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import pl.figurant.myshopcomplete.domain.api.MailSender;
 import pl.figurant.myshopcomplete.domain.api.OrderService;
 import pl.figurant.myshopcomplete.domain.api.PrivateOrderInfo;
 import pl.figurant.myshopcomplete.domain.cart.CartItem;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,16 +38,23 @@ public class PrivateOrderController extends HttpServlet {
             items += cartItem.getProductName();
             items += ", ";
         }
+        items = items.substring(0, items.length() - 2);//usuwam spację i przecinek który niepotrzebnie dopisuje w ostatnim kroku petli
         order.setProductNames(items);
         order.setShippingPrice(5.00);
-        Double cartPrice = order.getShippingPrice();
+        BigDecimal cartPrice = BigDecimal.valueOf(order.getShippingPrice());
         for (CartItem cartItem : cartItems) {
-            cartPrice += cartItem.getPrice();
+            cartPrice=cartPrice.add(cartItem.getPrice());
         }
         order.setPrice(cartPrice);
         OrderService orderService = new OrderService();
         orderService.savePrivateOrder(order);
         cartItems.clear();
+        MailSender mailSender = new MailSender();
+        try {
+            mailSender.sendPrivateOrderConfirmation(order);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         resp.sendRedirect(req.getContextPath()+"/");
     }
 

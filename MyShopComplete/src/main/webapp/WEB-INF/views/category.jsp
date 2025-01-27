@@ -29,9 +29,8 @@
                 </div>
                 <c:choose>
                     <c:when test="${product.discount > 0.00}">
-                        <p class="price-discount">Cena: <s>${product.price}zł </s><fmt:formatNumber
-                                value="${product.price - (product.price * (product.discount / 100))}" type="number"
-                                maxFractionDigits="2"/>zł</p>
+                        <p class="price-discount">Cena: <s>${product.price}zł </s>
+                            <c:out value="${product.calculatePrice()} zł"/></p>
                     </c:when>
                     <c:otherwise>
                         <p class="price-discount"><c:out value="${product.price}"/>zł</p>

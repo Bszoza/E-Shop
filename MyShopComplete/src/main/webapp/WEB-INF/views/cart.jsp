@@ -15,8 +15,7 @@
 <%@ include file="../segments/header.jspf" %>
 <main class="cart-content">
     <h1>Koszyk</h1>
-    <h1>Cena całkowita (+5zł za wysyłkę): <fmt:formatNumber value="${requestScope.cartPrice}" type="number" maxFractionDigits="2"
-                                          minFractionDigits="2"/> zł</h1>
+    <h1>Cena całkowita (+5zł za wysyłkę): ${requestScope.cartPrice} zł</h1>
     <table class="cart-table">
         <thead>
         <tr>
@@ -31,9 +30,7 @@
         <c:forEach var="cartItem" items="${requestScope.cartItems}">
             <tr>
                 <td>${cartItem.productName}</td>
-                <td><fmt:formatNumber value="${cartItem.price}" type="number" maxFractionDigits="2"
-                                      minFractionDigits="2"/> zł
-                </td>
+                <td>${cartItem.price} zł</td>
                 <td>${cartItem.quantity}</td>
                 <td>
                     <form action="${pageContext.request.contextPath}/add-to-cart" method="post">

@@ -1,10 +1,13 @@
 package pl.figurant.myshopcomplete.domain.api;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class ProductInfo {
     private int id;
     private String name;
     private String description;
-    private double price;
+    private BigDecimal price;
     private int in_stock;
     private String image1;
     private String image2;
@@ -12,7 +15,7 @@ public class ProductInfo {
     private Double discount;
 
 
-    public ProductInfo(int id, String name, String description, double price, int in_stock, String image, Double discount) {
+    public ProductInfo(int id, String name, String description, BigDecimal price, int in_stock, String image, Double discount) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -36,8 +39,15 @@ public class ProductInfo {
         return description;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
+    }
+
+    public BigDecimal calculatePrice() {
+        if (discount != null && !discount.equals("0")) {
+            BigDecimal discountAmount = price.multiply(BigDecimal.valueOf(discount));
+            return price.subtract(discountAmount).setScale(2, RoundingMode.HALF_UP);
+        } else return price;
     }
 
     public int getIn_stock() {

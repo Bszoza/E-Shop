@@ -3,13 +3,13 @@ package pl.figurant.myshopcomplete.domain.cart;
 import java.math.BigDecimal;
 
 public class CartItem {
-    private Double price;
+    private BigDecimal price;
     private Integer quantity;
     private String productName;
     public CartItem() {
     }
 
-    public CartItem(Double price, Integer quantity, String productName) {
+    public CartItem(BigDecimal price, Integer quantity, String productName) {
         this.price = price;
         this.quantity = quantity;
         this.productName = productName;
@@ -23,11 +23,11 @@ public class CartItem {
         this.productName = productName;
     }
 
-    public Double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

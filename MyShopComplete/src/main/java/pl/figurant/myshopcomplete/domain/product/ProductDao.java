@@ -81,7 +81,7 @@ public class ProductDao extends BaseDao {
         String name = resultSet.getString("name");
         String description = resultSet.getString("description");
         Integer category_id = resultSet.getInt("category_id");
-        Double price = resultSet.getDouble("price");
+        String price = resultSet.getString("price");
         Double discount = resultSet.getDouble("discount");
         Integer in_stock = resultSet.getInt("in_stock");
         String image = resultSet.getString("product_image");

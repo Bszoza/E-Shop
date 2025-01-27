@@ -26,7 +26,7 @@ public class OrderDao extends BaseDao {
             preparedStatement.setString(6, order.getPostalCode());
             preparedStatement.setString(7, order.getPhone());
             preparedStatement.setString(8, order.getProductNames());
-            preparedStatement.setDouble(9, order.getPrice());
+            preparedStatement.setBigDecimal(9, order.getPrice());
             preparedStatement.setDouble(10, order.getShippingPrice());
             preparedStatement.setObject(11, order.getOrderDate());
             preparedStatement.executeUpdate();
@@ -56,7 +56,7 @@ public class OrderDao extends BaseDao {
             preparedStatement.setString(6, order.getPostalCode());
             preparedStatement.setString(7, order.getPhone());
             preparedStatement.setString(8, order.getProductNames());
-            preparedStatement.setDouble(9, order.getPrice());
+            preparedStatement.setBigDecimal(9, order.getPrice());
             preparedStatement.setDouble(10, order.getShippingPrice());
             preparedStatement.setObject(11, order.getOrderDate());
             preparedStatement.executeUpdate();

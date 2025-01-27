@@ -1,5 +1,6 @@
 package pl.figurant.myshopcomplete.domain.order;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public class OrderPrivate {
@@ -12,14 +13,14 @@ public class OrderPrivate {
     private String postalCode;
     private String phone;
     private String productNames;
-    private Double price;
+    private BigDecimal price;
     private Double shippingPrice;
     private LocalDateTime orderDate;
 
     public OrderPrivate() {
     }
 
-    public OrderPrivate(String country, String name, String lastName, String email, String address, String postalCode, String phone, String productNames, Double price, Double shippingPrice, LocalDateTime orderDate) {
+    public OrderPrivate(String country, String name, String lastName, String email, String address, String postalCode, String phone, String productNames, BigDecimal price, Double shippingPrice, LocalDateTime orderDate) {
         this.country = country;
         this.name = name;
         this.lastName = lastName;
@@ -105,11 +106,11 @@ public class OrderPrivate {
         this.productNames = productNames;
     }
 
-    public Double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

@@ -23,9 +23,7 @@
         </div>
         <c:choose>
             <c:when test="${product.discount>0.0}">
-                <p class="price-discount">Cena: <s>${product.price}zł </s><fmt:formatNumber
-                        value="${product.price - (product.price * (product.discount / 100))}" type="number"
-                        maxFractionDigits="2"/>zł</p>
+                <p class="price-discount">Cena: <c:out value="${product.calculatePrice()}"/> zł</p>
             </c:when>
             <c:otherwise>
                 <p class="price-discount"><c:out value="${product.price}"/>zł</p>
@@ -38,7 +36,7 @@
             <c:when test="${product.in_stock>0}">
                 <form action="${pageContext.request.contextPath}/add-to-cart" method="post">
                     <input type="hidden" name="productName" value="${product.name}">
-                    <input type="hidden" name="productPrice" value="${product.price - (product.price * (product.discount / 100))}">
+                    <input type="hidden" name="productPrice" value="${product.calculatePrice()}">
                     <button class="add-cart" type="submit">Do koszyka</button>
                 </form></c:when>
             <c:otherwise>

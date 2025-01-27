@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import pl.figurant.myshopcomplete.domain.cart.CartItem;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,15 +16,15 @@ import java.util.List;
 public class CartController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Double cartPrice = 0.00;
+        BigDecimal cartPrice = new BigDecimal("0.00");
         List<CartItem> cartItems = (List<CartItem>) req.getSession().getAttribute("cartItems");
         if (cartItems == null) {
             cartItems = List.of();
         }
         for (CartItem cartItem : cartItems) {
-            cartPrice+=cartItem.getPrice();
+            cartPrice=cartPrice.add(cartItem.getPrice());
         }
-        cartPrice+=5.00;//wysyłka
+        cartPrice=cartPrice.add(BigDecimal.valueOf(5.00));//wysyłka
         req.setAttribute("cartPrice", cartPrice);
         req.setAttribute("cartItems", cartItems);
         req.getRequestDispatcher("WEB-INF/views/cart.jsp").forward(req, resp);

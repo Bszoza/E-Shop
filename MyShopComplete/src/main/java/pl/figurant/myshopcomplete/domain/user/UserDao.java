@@ -1,12 +1,15 @@
 package pl.figurant.myshopcomplete.domain.user;
 
 import pl.figurant.myshopcomplete.domain.common.BaseDao;
+import pl.figurant.myshopcomplete.domain.product.Product;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class UserDao extends BaseDao {
@@ -55,4 +58,45 @@ public class UserDao extends BaseDao {
             throw new RuntimeException(e);
         }
     }
+
+    public List<String> getEmails() {
+        final String query = """
+                SELECT
+                    email
+                    FROM user
+                """;
+        try (Connection connection = dataSource.getConnection();
+             Statement statement = connection.createStatement()) {
+            ResultSet resultSet = statement.executeQuery(query);
+            List<String> emails = new ArrayList<>();
+            while (resultSet.next()) {
+                String mail = resultSet.getString("email");
+                emails.add(mail);
+            }
+            return emails;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<String> getUsernames() {
+        final String query = """
+                SELECT
+                    username
+                    FROM user
+                """;
+        try (Connection connection = dataSource.getConnection();
+             Statement statement = connection.createStatement()) {
+            ResultSet resultSet = statement.executeQuery(query);
+            List<String> usernames = new ArrayList<>();
+            while (resultSet.next()) {
+                String username = resultSet.getString("username");
+                usernames.add(username);
+            }
+            return usernames;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

@@ -19,4 +19,8 @@
             <max-age>86400</max-age>
         </cookie-config>
     </session-config>
+    <context-param>
+        <param-name>stripeSecretKey</param-name>
+        <param-value>your-secret-key-here</param-value>
+    </context-param>
 </web-app>

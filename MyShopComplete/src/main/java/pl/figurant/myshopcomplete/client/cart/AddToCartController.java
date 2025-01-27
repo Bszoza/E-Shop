@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import pl.figurant.myshopcomplete.domain.cart.CartItem;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +26,10 @@ public class AddToCartController extends HttpServlet {
             for (CartItem cartItemCheck : cartItems) {
                 if (cartItemCheck.getProductName().equals(req.getParameter("productName"))) {
                     typeAlreadyIn = true;
-                    cartItemCheck.setPrice(Double.valueOf(req.getParameter("productPrice")) / cartItemCheck.getQuantity() + cartItemCheck.getPrice());
+                    BigDecimal newPrice = new BigDecimal(req.getParameter("productPrice"));
+                    newPrice = newPrice.divide(new BigDecimal(cartItemCheck.getQuantity())).setScale(2, BigDecimal.ROUND_HALF_UP);
+                    newPrice = new BigDecimal(req.getParameter("productPrice")).add(newPrice);
+                    cartItemCheck.setPrice(newPrice);
                     cartItemCheck.setQuantity(1 + cartItemCheck.getQuantity());
                     break;
                 }
@@ -33,7 +37,7 @@ public class AddToCartController extends HttpServlet {
             if (!typeAlreadyIn) {
                 CartItem cartItem = new CartItem();
                 cartItem.setProductName(req.getParameter("productName"));
-                cartItem.setPrice(Double.valueOf(req.getParameter("productPrice")));
+                cartItem.setPrice(new BigDecimal(req.getParameter("productPrice")));
                 cartItem.setQuantity(1);
                 cartItems.add(cartItem);
             }

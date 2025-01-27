@@ -1,5 +1,7 @@
 package pl.figurant.myshopcomplete.domain.api;
 
+import java.math.BigDecimal;
+
 public class CompanyOrderInfo {
     private String country;
     private String companyName;
@@ -10,13 +12,13 @@ public class CompanyOrderInfo {
     private String areaCode;
     private String phone;
     private String productNames;
-    private Double price;
+    private BigDecimal price;
     private Double shippingPrice;
 
     public CompanyOrderInfo() {
     }
 
-    public CompanyOrderInfo(String country, String companyName, String NIP, String email, String address, String postalCode, String areaCode, String phone, String productNames, Double price, Double shippingPrice) {
+    public CompanyOrderInfo(String country, String companyName, String NIP, String email, String address, String postalCode, String areaCode, String phone, String productNames, BigDecimal price, Double shippingPrice) {
         this.country = country;
         this.companyName = companyName;
         this.NIP = NIP;
@@ -102,11 +104,11 @@ public class CompanyOrderInfo {
         this.productNames = productNames;
     }
 
-    public Double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
@@ -116,5 +118,10 @@ public class CompanyOrderInfo {
 
     public void setShippingPrice(Double shippingPrice) {
         this.shippingPrice = shippingPrice;
+    }
+
+    @Override
+    public String toString() {
+        return "Firma: " + companyName + "\nAdres: "+address + "\nKod pocztowy: " + postalCode + "\nCena produktów: " + price + "\nCena wysyłki: 5zł" + "\nProdukty: " + productNames;
     }
 }

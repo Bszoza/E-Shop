@@ -12,6 +12,9 @@
     <%@ include file="../segments/header.jspf" %>
     <form class="user-form" action="${pageContext.request.contextPath}/signup" method="post">
         <h2 class="user-form-title">Zarejestruj się na naszym sklepie</h2>
+        <c:if test="${not empty errorMessage}">
+            <p class="error-message">${errorMessage}</p>
+        </c:if>
         <input name="name" placeholder="Imię" required>
         <input name="lastname" placeholder="Nazwisko" required>
         <input name="username" placeholder="Nazwa użytkownika" required>

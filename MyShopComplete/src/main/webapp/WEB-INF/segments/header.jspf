@@ -24,7 +24,7 @@
                                                                                            title="Zaloguj"></a>
             </c:when>
             <c:when test="${not empty pageContext.request.userPrincipal}">
-                <a href="${pageContext.request.contextPath}/logout" class="login-link"><img src="images/login.png"
+                <a href="${pageContext.request.contextPath}/logout" class="login-link"><img src="images/logout.svg"
                                                                                            class="login-button"
                                                                                            title="Wyloguj"></a>
             </c:when>
