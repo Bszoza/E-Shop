@@ -1,11 +1,8 @@
 package pl.figurant.myshopcomplete.domain.api;
 
-import com.mysql.cj.x.protobuf.MysqlxCrud;
 import pl.figurant.myshopcomplete.domain.order.OrderCompany;
 import pl.figurant.myshopcomplete.domain.order.OrderDao;
 import pl.figurant.myshopcomplete.domain.order.OrderPrivate;
-import pl.figurant.myshopcomplete.domain.user.User;
-
 import java.time.LocalDateTime;
 
 public class OrderService {

@@ -1,7 +1,6 @@
 package pl.figurant.myshopcomplete.domain.product;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 
 public class Product {
     private Integer id;

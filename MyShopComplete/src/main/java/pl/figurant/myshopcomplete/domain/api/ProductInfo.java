@@ -1,5 +1,4 @@
 package pl.figurant.myshopcomplete.domain.api;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 

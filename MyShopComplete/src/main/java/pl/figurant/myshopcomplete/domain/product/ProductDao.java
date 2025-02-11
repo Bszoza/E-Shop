@@ -1,20 +1,12 @@
 package pl.figurant.myshopcomplete.domain.product;
 
-import pl.figurant.myshopcomplete.config.DataSourceProvider;
-import pl.figurant.myshopcomplete.domain.category.Category;
 import pl.figurant.myshopcomplete.domain.common.BaseDao;
-
-import javax.naming.NamingException;
-import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 public class ProductDao extends BaseDao {
 
-
-    //Wczytuje pordukty z bazy danych
     public List<Product> getAll() {
         final String query = """
                 SELECT

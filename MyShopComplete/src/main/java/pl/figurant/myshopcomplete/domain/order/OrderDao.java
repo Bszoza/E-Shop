@@ -1,7 +1,6 @@
 package pl.figurant.myshopcomplete.domain.order;
 
 import pl.figurant.myshopcomplete.domain.common.BaseDao;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

@@ -3,8 +3,6 @@ package pl.figurant.myshopcomplete.domain.api;
 import org.apache.commons.codec.digest.DigestUtils;
 import pl.figurant.myshopcomplete.domain.user.User;
 import pl.figurant.myshopcomplete.domain.user.UserDao;
-
-import java.security.NoSuchAlgorithmException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;

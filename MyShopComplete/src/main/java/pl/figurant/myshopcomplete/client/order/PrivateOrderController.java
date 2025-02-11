@@ -1,6 +1,5 @@
 package pl.figurant.myshopcomplete.client.order;
 
-import com.mysql.cj.util.StringUtils;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -10,7 +9,6 @@ import pl.figurant.myshopcomplete.domain.api.MailSender;
 import pl.figurant.myshopcomplete.domain.api.OrderService;
 import pl.figurant.myshopcomplete.domain.api.PrivateOrderInfo;
 import pl.figurant.myshopcomplete.domain.cart.CartItem;
-
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;

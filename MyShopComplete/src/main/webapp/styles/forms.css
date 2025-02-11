@@ -1,9 +1,11 @@
 .body{
     background-color: black;
 }
+
 a {
     text-decoration: none;
 }
+
 .user-form {
     display: grid;
     grid-template-columns: 1fr;
@@ -14,12 +16,10 @@ a {
     max-width: 600px;
 }
 
-
 .user-form > * {
     font-size: 1.2em;
     margin: 16px;
 }
-
 
 .user-form > input,
 .user-form > button {

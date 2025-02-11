@@ -1,8 +1,6 @@
 package pl.figurant.myshopcomplete.domain.user;
-
+import pl.figurant.myshopcomplete.domain.api.UserInfo;
 import pl.figurant.myshopcomplete.domain.common.BaseDao;
-import pl.figurant.myshopcomplete.domain.product.Product;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -10,7 +8,6 @@ import java.sql.Statement;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class UserDao extends BaseDao {
     public void save(User user) {
@@ -99,4 +96,29 @@ public class UserDao extends BaseDao {
         }
     }
 
+    public UserInfo getUserInfo(String usernameQuery) {
+        final String query = """
+                SELECT
+                    username, email, name, last_name, registration_date
+                    FROM user WHERE username = ?
+                """;
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, usernameQuery);
+            ResultSet resultSet = statement.executeQuery();
+            UserInfo user = null;
+            while (resultSet.next()) {
+                String username = resultSet.getString("username");
+                String email = resultSet.getString("email");
+                String name = resultSet.getString("name");
+                String lastName = resultSet.getString("last_name");
+                Date registrationDate = resultSet.getDate(("registration_date"));
+                user = new UserInfo(name, lastName, email, username, registrationDate);
+            }
+            return user;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+}
 }

@@ -1,5 +1,4 @@
 package pl.figurant.myshopcomplete.client.order;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -9,7 +8,6 @@ import pl.figurant.myshopcomplete.domain.api.CompanyOrderInfo;
 import pl.figurant.myshopcomplete.domain.api.MailSender;
 import pl.figurant.myshopcomplete.domain.api.OrderService;
 import pl.figurant.myshopcomplete.domain.cart.CartItem;
-
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -24,10 +22,9 @@ public class CompanyOrderController extends HttpServlet {
             cartItems = new ArrayList<>();
             req.getSession().setAttribute("cartItems", cartItems);
         }
-
+        CompanyOrderInfo order = new CompanyOrderInfo();
         String houseNumber = req.getParameter("houseNumber");
         String localNumber = req.getParameter("localNumber");
-        CompanyOrderInfo order = new CompanyOrderInfo();
         order.setCountry(req.getParameter("country"));
         order.setCompanyName(req.getParameter("name"));
         order.setNIP(req.getParameter("NIP"));

@@ -6,7 +6,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import pl.figurant.myshopcomplete.domain.cart.CartItem;
-
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;

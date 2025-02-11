@@ -1,7 +1,5 @@
 package pl.figurant.myshopcomplete.domain.common;
-
 import pl.figurant.myshopcomplete.config.DataSourceProvider;
-
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 import java.sql.Connection;

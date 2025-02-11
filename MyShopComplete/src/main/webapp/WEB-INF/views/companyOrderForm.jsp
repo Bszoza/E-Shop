@@ -44,7 +44,7 @@
     <input name="houseNumber" placeholder="Nr domu">
     <input name="localNumber" placeholder="Nr lokalu">
     <input type="text" name="postalCode" required pattern="[0-9]{2}-[0-9]{3}" placeholder="__-___">
-    <input type="text" name="place" required>
+    <input type="text" name="place" placeholder="Miejscowość" required>
     <select name="areaCode" required>
         <option value="48">Polska (+48)</option>
         <option value="49">Niemcy (+49)</option>

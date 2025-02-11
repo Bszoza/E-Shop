@@ -15,7 +15,7 @@
         </ul>
     </aside>
     <aside class="user-actions">
-        <a href="#" class="help-link"><img src="images/help_icon.png" class="help-button" title="Pomoc"></a>
+
         <a href="${pageContext.request.contextPath}/cart" class="shopping-cart"><img src="images/shopping-cart.png" class="cart-button" title="Koszyk"></a>
         <c:choose>
             <c:when test="${empty pageContext.request.userPrincipal}">
@@ -27,6 +27,10 @@
                 <a href="${pageContext.request.contextPath}/logout" class="login-link"><img src="images/logout.svg"
                                                                                            class="login-button"
                                                                                            title="Wyloguj"></a>
+
+                <a href="${pageContext.request.contextPath}/userinfo" class="login-link"><img src="images/history.svg"
+                                                                                            class="login-button"
+                                                                                            title="Twoje dane"></a>
             </c:when>
         </c:choose>
     </aside>

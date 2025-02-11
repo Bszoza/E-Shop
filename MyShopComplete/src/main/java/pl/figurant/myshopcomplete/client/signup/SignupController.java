@@ -1,6 +1,5 @@
 package pl.figurant.myshopcomplete.client.signup;
 
-import com.mysql.cj.exceptions.StreamingNotifiable;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -9,11 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import pl.figurant.myshopcomplete.domain.api.MailSender;
 import pl.figurant.myshopcomplete.domain.api.UserRegistration;
 import pl.figurant.myshopcomplete.domain.api.UserService;
-
 import java.io.IOException;
-import java.sql.SQLIntegrityConstraintViolationException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 @WebServlet("/signup")

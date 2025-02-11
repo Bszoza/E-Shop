@@ -1,9 +1,6 @@
 package pl.figurant.myshopcomplete.domain.api;
-
-import pl.figurant.myshopcomplete.domain.category.Category;
 import pl.figurant.myshopcomplete.domain.product.Product;
 import pl.figurant.myshopcomplete.domain.product.ProductDao;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

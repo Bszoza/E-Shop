@@ -1,11 +1,6 @@
 package pl.figurant.myshopcomplete.domain.category;
 
-import pl.figurant.myshopcomplete.config.DataSourceProvider;
 import pl.figurant.myshopcomplete.domain.common.BaseDao;
-
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

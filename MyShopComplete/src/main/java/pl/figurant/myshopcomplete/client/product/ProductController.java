@@ -9,7 +9,6 @@ import pl.figurant.myshopcomplete.domain.api.CategoryInfo;
 import pl.figurant.myshopcomplete.domain.api.CategoryService;
 import pl.figurant.myshopcomplete.domain.api.ProductInfo;
 import pl.figurant.myshopcomplete.domain.api.ProductService;
-
 import java.io.IOException;
 import java.util.List;
 

@@ -64,7 +64,7 @@
                 <button class="order-button" type="submit">Zamów prywatnie</button>
             </form>
             <form action="${pageContext.request.contextPath}/companyform" method="get">
-                <button class="order-button" type="submit">Weź na fakturę</button>
+                <button class="order-button" type="submit">Zamów jako fimra</button>
             </form>
         </c:when>
         <c:otherwise>
