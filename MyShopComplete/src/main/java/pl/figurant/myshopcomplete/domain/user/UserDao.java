@@ -1,6 +1,11 @@
 package pl.figurant.myshopcomplete.domain.user;
+
 import pl.figurant.myshopcomplete.domain.api.UserInfo;
+import pl.figurant.myshopcomplete.domain.api.UserOrderHistoryInfo;
 import pl.figurant.myshopcomplete.domain.common.BaseDao;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -39,13 +44,14 @@ public class UserDao extends BaseDao {
             throw new RuntimeException(e);
         }
     }
+
     private void saveUserRole(User user) {
         final String query = """
-                        INSERT INTO
-                            user_role (username, role_name)
-                        VALUES
-                            (?,?)
-                        """;
+                INSERT INTO
+                    user_role (username, role_name)
+                VALUES
+                    (?,?)
+                """;
         try (Connection connection = getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, user.getUsername());
@@ -119,6 +125,38 @@ public class UserDao extends BaseDao {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
 
-}
+    public List<UserOrderHistoryInfo> getUserOrderHistory(String email) {
+        final String query = """
+                SELECT product_names, price, date, shipping_price, phone_number, address 
+                FROM order_private WHERE email = ?
+                UNION ALL
+                SELECT product_names, price, date, shipping_price, phone_number, address 
+                FROM order_company WHERE email = ?
+                """;
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, email);
+            statement.setString(2, email);  // drugi raz dla drugiej tabeli zeby miec unie spełniona
+            ResultSet resultSet = statement.executeQuery();
+            List<UserOrderHistoryInfo> history = new ArrayList<>();
+            while (resultSet.next()) {
+                String productNames = resultSet.getString("product_names");
+                Date dateOrder = resultSet.getDate("date");
+                String phone = resultSet.getString("phone_number");
+                String address = resultSet.getString("address");
+                BigDecimal price = resultSet.getBigDecimal("price");
+                BigDecimal shippingPrice = resultSet.getBigDecimal("shipping_price");
+                price = price.add(shippingPrice).setScale(2, RoundingMode.HALF_UP);
+                UserOrderHistoryInfo record = new UserOrderHistoryInfo(productNames, dateOrder, price, address, phone);
+                history.add(record);
+            }
+            return history;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
 }
