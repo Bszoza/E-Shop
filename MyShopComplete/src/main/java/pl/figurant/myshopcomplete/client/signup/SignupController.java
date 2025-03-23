@@ -21,42 +21,40 @@ public class SignupController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String verificationCode = req.getParameter("verificationCode");
 
-        // Jeśli kod weryfikacyjny jest podany, sprawdzamy jego poprawność
+        
         if (verificationCode != null) {
             if (verificationCode.equals(code)) {
                 userService.registerUser(userRegistration);
-                req.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(req, resp); // Sukces - przekierowanie na stronę logowania
+                req.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(req, resp);
                 return;
             } else {
                 req.setAttribute("errorMessage", "Nieprawidłowy kod weryfikacyjny. Podaj kod ponownie.");
-                req.getRequestDispatcher("/WEB-INF/views/emailConfirmation.jsp").forward(req, resp); // Wyświetlenie błędu
+                req.getRequestDispatcher("/WEB-INF/views/emailConfirmation.jsp").forward(req, resp); 
                 return;
             }
         }
 
-        // Domyślnie pokazujemy stronę rejestracji
+        
         req.getRequestDispatcher("/WEB-INF/views/signup.jsp").forward(req, resp);
     }
-
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         userRegistration = getUserData(req);
 
-        // Sprawdzamy, czy adres e-mail  już istnieje
+      
         if (userService.getemails().contains(userRegistration.getEmail())) {
             req.setAttribute("errorMessage", "Istnieje już konto z tym adresem e-mail.");
             req.getRequestDispatcher("/WEB-INF/views/signup.jsp").forward(req, resp);
             return;
         }
-        // Sprawdzamy, czy nazwa użytkownika już istnieje
+      
         if (userService.getUsernames().contains(userRegistration.getUsername())) {
             req.setAttribute("errorMessage", "Istnieje już konto z tym username.");
             req.getRequestDispatcher("/WEB-INF/views/signup.jsp").forward(req, resp);
             return;
         }
 
-        // Generowanie kodu weryfikacyjnego i wysyłanie e-maila
         code = generateCode();
         MailSender mailSender = new MailSender();
         try {
