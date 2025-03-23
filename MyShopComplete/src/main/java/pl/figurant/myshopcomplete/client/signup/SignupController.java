@@ -60,7 +60,7 @@ public class SignupController extends HttpServlet {
         try {
             String basePath = req.getScheme() + "://" + req.getServerName() + ":" + req.getServerPort() + req.getContextPath();
             mailSender.sendAccountConfirmation(userRegistration, basePath,code);
-            req.getRequestDispatcher("/WEB-INF/views/emailConfirmation.jsp").forward(req, resp); // Wyświetlenie widoku weryfikacji
+            req.getRequestDispatcher("/WEB-INF/views/emailConfirmation.jsp").forward(req, resp); 
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
